@@ -1,7 +1,7 @@
 import { Button, Typography } from '@mui/material'
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthProvider';
+import { AuthContext } from '../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 function Login() {
     const auth = getAuth();
@@ -15,7 +15,7 @@ function Login() {
     }
 
     if (user?.uid) {
-        navigate('/home')
+        navigate('/')
     }
     return <>
         <Typography>Welcome to Note app </Typography>
