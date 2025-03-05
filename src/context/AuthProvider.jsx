@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
     const navigate = useNavigate();
     const auth = getAuth();
 
@@ -20,12 +20,14 @@ export default function AuthProvider({ children }) {
                 return
             }
 
-            setUser(null)
+            setUser({})
             localStorage.clear()
             navigate('/login')
         })
 
-        return () => unsubcrirbed()
+        return () => {
+            unsubcrirbed();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [auth])
 
