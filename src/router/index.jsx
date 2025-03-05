@@ -9,6 +9,7 @@ import Home from "../pages/Home.jsx";
 import ErrorPage from "../pages/ErrorPage.jsx";
 
 import ProtectedRoute from './ProtectedRoute.jsx'
+import ListNote from "../component/ListNote.jsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const AuthLayout = () => {
@@ -30,6 +31,12 @@ const router = createBrowserRouter([
                     {
                         element: <Home />,
                         path: "/",
+                        children: [
+                            {
+                                element: <ListNote />,
+                                path: "folders/:id",
+                            }
+                        ]
                     }
                 ]
             },
