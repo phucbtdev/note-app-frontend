@@ -9,7 +9,8 @@ import Home from "../pages/Home.jsx";
 import ErrorPage from "../pages/ErrorPage.jsx";
 
 import ProtectedRoute from './ProtectedRoute.jsx'
-import ListNote from "../component/ListNote.jsx";
+import NoteList from "../component/NoteList.jsx";
+import Note from "../component/Note.jsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const AuthLayout = () => {
@@ -33,8 +34,14 @@ const router = createBrowserRouter([
                         path: "/",
                         children: [
                             {
-                                element: <ListNote />,
-                                path: "folders/:id",
+                                element: <NoteList />,
+                                path: "folders/:folderId",
+                                children: [
+                                    {
+                                        element: <Note />,
+                                        path: "note/:noteId",
+                                    }
+                                ]
                             }
                         ]
                     }

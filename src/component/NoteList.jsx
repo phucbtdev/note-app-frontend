@@ -1,5 +1,6 @@
 import { Card, CardContent, Grid, List, ListItem, Typography, Box } from '@mui/material';
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 const ListNote = () => {
 
@@ -9,7 +10,7 @@ const ListNote = () => {
     ]
     return (
         <>
-            <Grid height={'100%'} >
+            <Grid container height={'100%'} >
                 <Grid item xs={4}
                     sx={{
                         width: '100%',
@@ -65,12 +66,9 @@ const ListNote = () => {
                 </Grid>
 
                 <Grid item xs={8}>
-
+                    <Outlet></Outlet>
                 </Grid>
-
             </Grid>
-
-
         </>
     );
 }

@@ -4,9 +4,11 @@ import { RouterProvider } from 'react-router-dom';
 import { Container } from '@mui/material';
 import router from './router';
 
+import "../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+
 import './index.css';
 
 import './firebase/configFirebase';
