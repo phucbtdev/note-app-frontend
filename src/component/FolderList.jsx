@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 const ListFolders = ({ folders }) => {
-    const { olderId } = useParams()
-    const [activeFolderId, setActiveFolderId] = useState(olderId);
+    const { folderId } = useParams()
+    const [activeFolderId, setActiveFolderId] = useState(folderId);
 
     return (
         <>

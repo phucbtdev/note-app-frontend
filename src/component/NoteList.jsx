@@ -1,9 +1,10 @@
 import { Card, CardContent, Grid, List, ListItem, Typography, Box } from '@mui/material';
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, Outlet, useParams } from 'react-router-dom';
 
 const ListNote = () => {
-
+    const { noteId } = useParams()
+    const [activeNote, setActiveNote] = useState(noteId)
     const notes = [
         { id: '1', note: 'no dangerousl dangerouslySetInnerHTMLySet dangerouslySetInnerHTMLInnerHTMLte' },
         { id: '2', note: 'no dangerousl dangerouslySetInnerHTMLySet dangerouslySetInnerHTMLInnerHTMLte' },
@@ -40,11 +41,18 @@ const ListNote = () => {
                     >
                         {notes.map(({ id, note }) => {
                             return (
-                                <ListItem key={id}
+
+                                <Link
+                                    key={id}
+                                    to={`note/${id}`}
+                                    style={{ textDecoration: 'none', }}
+                                    onClick={() => setActiveNote(id)}
                                 >
                                     <Card
                                         sx={{
-                                            cursor: 'pointer'
+                                            cursor: 'pointer',
+                                            mb: '10px',
+                                            bgcolor: id == activeNote ? 'rgb(255 211 140)' : null
                                         }}
                                     >
                                         <CardContent
@@ -58,7 +66,7 @@ const ListNote = () => {
                                             />
                                         </CardContent>
                                     </Card>
-                                </ListItem>
+                                </Link>
                             )
                         })}
 
