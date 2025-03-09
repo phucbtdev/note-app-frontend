@@ -1,14 +1,12 @@
 import { Card, CardContent, Grid, List, ListItem, Typography, Box } from '@mui/material';
 import React, { useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLoaderData, useParams } from 'react-router-dom';
 
 const ListNote = () => {
     const { noteId } = useParams()
     const [activeNote, setActiveNote] = useState(noteId)
-    const notes = [
-        { id: '1', note: 'no dangerousl dangerouslySetInnerHTMLySet dangerouslySetInnerHTMLInnerHTMLte' },
-        { id: '2', note: 'no dangerousl dangerouslySetInnerHTMLySet dangerouslySetInnerHTMLInnerHTMLte' },
-    ]
+
+    const { folder: { note } } = useLoaderData()
     return (
         <>
             <Grid container height={'100%'} >
@@ -39,7 +37,7 @@ const ListNote = () => {
                             </Box>
                         }
                     >
-                        {notes.map(({ id, note }) => {
+                        {note.map(({ id, content }) => {
                             return (
 
                                 <Link
@@ -61,7 +59,7 @@ const ListNote = () => {
                                             <div
                                                 style={{ fontSize: 14, fontWeight: 'bold' }}
                                                 dangerouslySetInnerHTML={{
-                                                    __html: `${note.substring(0, 30) || 'Empty'}`,
+                                                    __html: `${content.substring(0, 30) || 'Empty'}`,
                                                 }}
                                             />
                                         </CardContent>

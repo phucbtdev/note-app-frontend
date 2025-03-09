@@ -12,6 +12,9 @@ import ProtectedRoute from './ProtectedRoute.jsx'
 import NoteList from "../component/NoteList.jsx";
 import Note from "../component/Note.jsx";
 
+import { folderLoader } from "../utils/folderUtil.js";
+import { notesLoader } from "../utils/notesUtil.js";
+
 // eslint-disable-next-line react-refresh/only-export-components
 const AuthLayout = () => {
     return <AuthProvider><Outlet></Outlet></AuthProvider>
@@ -32,34 +35,12 @@ const router = createBrowserRouter([
                     {
                         element: <Home />,
                         path: "/",
-                        loader: async () => {
-                            const query = `
-                                query Folders {
-                                    folders {
-                                        id
-                                        name
-                                        createdAt
-                                    }
-                                } 
-                            `
-
-                            const res = await fetch('http://localhost:4000/', {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify({
-                                    query: query,
-                                }),
-                            })
-
-                            const { data } = await res.json();
-                            return data;
-                        },
+                        loader: folderLoader,
                         children: [
                             {
                                 element: <NoteList />,
                                 path: "folders/:folderId",
+                                loader: notesLoader,
                                 children: [
                                     {
                                         element: <Note />,
