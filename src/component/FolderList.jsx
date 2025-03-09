@@ -26,7 +26,7 @@ const ListFolders = ({ folders }) => {
                     </Typography>
                 }
             >
-                {folders.map(({ id, folderName }) => {
+                {folders.map(({ id, name }) => {
                     return (
                         <Link
                             key={id}
@@ -49,7 +49,7 @@ const ListFolders = ({ folders }) => {
                                             fontWeight: 'bold'
                                         }}
                                     >
-                                        {folderName}
+                                        {name}
                                     </Typography>
                                 </CardContent>
                             </Card>

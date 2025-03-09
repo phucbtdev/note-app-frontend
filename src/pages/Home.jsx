@@ -1,15 +1,11 @@
 import { Box, Typography, Grid } from '@mui/material';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 
 import UserMenu from '../component/UserMenu';
 import FolderList from '../component/FolderList';
 
 export default function Home() {
-    const folders = [
-        { id: '1', folderName: 'Plan for next week' },
-        { id: '2', folderName: 'Plan for next week2' }
-    ]
-
+    const { folders } = useLoaderData();
     return <>
         <Typography variant="h4" color="initial">Note app</Typography>
         <Box sx={{ display: 'flex', justifyContent: 'right', mb: '10px' }}>
