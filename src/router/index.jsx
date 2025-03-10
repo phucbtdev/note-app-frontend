@@ -14,6 +14,7 @@ import Note from "../component/Note.jsx";
 
 import { folderLoader } from "../utils/folderUtil.js";
 import { notesLoader } from "../utils/notesUtil.js";
+import { noteLoader } from "../utils/noteUtil.js";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const AuthLayout = () => {
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
                                     {
                                         element: <Note />,
                                         path: "note/:noteId",
+                                        loader: noteLoader
                                     }
                                 ]
                             }

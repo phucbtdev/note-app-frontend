@@ -8,14 +8,11 @@ import {
 
 import { Editor } from 'react-draft-wysiwyg'
 import draftToHtml from 'draftjs-to-html';
+import { useLoaderData } from 'react-router-dom';
 
 const Note = () => {
 
-    const note = {
-        id: '999',
-        content: '<p>This is new note</p>'
-    }
-
+    const { note } = useLoaderData()
 
     const [editorState, setEditorState] = useState(() => {
         return EditorState.createEmpty()

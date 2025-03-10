@@ -14,9 +14,7 @@ import './index.css';
 import './firebase/configFirebase';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Container maxWidth='lg' sx={{ textAlign: 'center', marginTop: '50px' }} >
-      <RouterProvider router={router}></RouterProvider>
-    </Container>
-  </StrictMode>,
+  <Container maxWidth='lg' sx={{ textAlign: 'center', marginTop: '50px' }} >
+    <RouterProvider router={router}></RouterProvider>
+  </Container>
 ) 
