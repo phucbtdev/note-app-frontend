@@ -1,3 +1,5 @@
+import { GraphQLRequest } from "./request";
+
 export const noteLoader = async ({ params: { noteId } }) => {
     const query = `
         query Note($noteId: String) {
@@ -7,21 +9,13 @@ export const noteLoader = async ({ params: { noteId } }) => {
             }
         }
     `
-
-    const res = await fetch('http://localhost:4000/', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            query: query,
-            variables: {
-                noteId
-            }
-        }),
+    const data = await GraphQLRequest({
+        query: query,
+        variables: {
+            noteId
+        }
     })
 
-    const { data } = await res.json();
     return data;
 }
 
